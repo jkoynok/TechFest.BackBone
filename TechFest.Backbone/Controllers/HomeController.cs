@@ -19,6 +19,12 @@ namespace TechFest.Backbone.Controllers
             return View(db.Books.First());
         }
 
+        public ActionResult BookCollection()
+        {
+            var db = new TechFest.Backbone.Models.BooksEntities();
+            return View(db.Books);
+        }
+
         public ActionResult About()
         {
             return View();
