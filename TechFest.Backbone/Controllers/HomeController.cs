@@ -9,10 +9,14 @@ namespace TechFest.Backbone.Controllers
     public class HomeController : Controller
     {
         public ActionResult Index()
-        {
-            ViewBag.Message = "Welcome to ASP.NET MVC!";
-
+        {         
             return View();
+        }
+
+        public ActionResult SingleBook()
+        {
+            var db = new TechFest.Backbone.Models.BooksEntities();
+            return View(db.Books.First());
         }
 
         public ActionResult About()
