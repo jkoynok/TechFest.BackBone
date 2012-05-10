@@ -1,4 +1,7 @@
-﻿
+﻿/// <reference path="underscore-min.js" />
+/// <reference path="backbone-min.js" />
+/// <reference path="jquery-1.5.1.js" />
+
 var tf = tf || {};
 
 //create a bb Book Model prototype (class)

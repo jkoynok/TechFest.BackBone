@@ -43,7 +43,8 @@ it references a model
 it wires up dom events
 it exposes event handlers
 it create it's own dom element and add itself to the tree.  This is not as trivial as it sounds.
-Rendering is all about inserting a LIVE DOM NODE, with both content and an underlying model, and callbacks that connect the two.
+Rendering is all about instantiing a LIVE DOM NODE, with both content and an underlying model, and callbacks that connect the two.
+Only after render() has created this node is it INSERTED for display in browser
 
 -css selector (not useful)
 -id selector (userful)
