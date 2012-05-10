@@ -18,7 +18,7 @@ $(document).ready(function() {
     //bootstrap in some server data
     tf.rawmodel = @Html.Raw(Json.Encode(Model)); 
     
-    //create a bb Book Mode
+    //create a bb Book Model
     tf.BookModel = Backbone.Model.extend({
         IncrementLikes: function() {
             this.set({ Likes : this.get('Likes') + 1});    
@@ -41,7 +41,7 @@ $(document).ready(function() {
              },
              render: function() {               
                 $(this.el).html(this.model.get('Title') + '(' + this.model.get('Likes') + ' likes)');
-                return this;
+                 return this;
              }
     });
 
@@ -54,4 +54,7 @@ $(document).ready(function() {
 //so what?
 
 
+</script>
+<script type='text/html' id='bookTemplate'>
+    <li class='book'>{title} - ({Likes} likes)</li>
 </script>

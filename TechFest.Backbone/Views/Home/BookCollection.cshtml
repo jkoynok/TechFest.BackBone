@@ -13,25 +13,21 @@
 <script type="text/javascript">
 
 var tf = tf || {};
- tf.RawBooks = @Html.Raw(Json.Encode(Model));    
+tf.RawBooks = @Html.Raw(Json.Encode(Model));    
 
-$(document).ready(function() {
-  
+$(document).ready(function() { 
     //convert raw data to a backbone model
     tf.BookCollection = [];
-
     //populate array of bookviews
     _.each(tf.RawBooks, function(x) {                     
            tf.BookCollection.push(new tf.BookView({model : new tf.BookModel(x)}));       
     });
-
     //render them
     _.each(tf.BookCollection, function(x) {
         $('#books').append(x.render().el);
     });
-
 });
 
-//so what -> we just stabilized and reused code, we can test it, and DEVELOP it.
+//so what -> we just stabilized and reused code, we can test it, and DEVELOP it and MAKE IT BETTER.
 
 </script>

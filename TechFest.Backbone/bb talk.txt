@@ -1,0 +1,95 @@
+
+Slide 1 - Server MVC
+
+the problem
+-who has code the looks like this:
+
+function x, function y, function z
+
+-who is using a js framework?
+
+
+server side mvc - what is it, how does it work?
+diffs- only responds to http events on server models
+
+Slide 2
+
+client side mvc - dom events on js models
+
+slide 2.5
+
+the players ->
+big list, but focus on bb, ko, ember/sproutcore
+alternatives:  jquery ui, widgets, 
+
+nice chart
+
+slide 3
+the prototype/instance model
+
+basics the model compare the model to a poco -> pojo
+-starts as a pojo of Data Only
+-then you ADD custom methods, validation
+
+slide 3.5
+-, exposes special getters/setters
+also:validation
+
+slide 4
+
+views -> dom events
+what it does for you: 
+it references a model
+it wires up dom events
+it exposes event handlers
+it renders itself
+
+slide 5
+
+collections -> array of models with extra methods
+
+then create an array of views ->
+
+slide 6
+
+code demo
+-putting it together 
+
+-IN the document.ready
+-create protos 
+-new up instances
+-call render, DONE
+
+slide 7
+
+quick hits:
+
+routers: quick hit
+not covering:  backbone sync / tied to rest endpoints
+not covering: tdd on the models
+namespacing
+
+slide 9
+
+why I like bb:
+-all pojos
+-offloads templating
+-extremely flexible/powerful
+--ex: el, selectors allow either scratch or progressive enhancement
+-underscore.js is a powerfull array util
+
+cons:
+-poor 2-way binding -> relies on complete rerendering
+-not suited to deeply nested objects
+
+
+slide 10
+
+conclusions - takeaway
+-clean separation into rich objects
+-you will LEARN js again, new syntax
+-client side IS here as rich mode
+-after you take away compatibility, devices, accessibility, etc.
+
+
+

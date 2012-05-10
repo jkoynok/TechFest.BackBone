@@ -4,10 +4,10 @@ var tf = tf || {};
 //create a bb Book Model prototype (class)
 tf.BookModel = Backbone.Model.extend({
     IncrementLikes: function () {
+        if (this.get('Likes') > 4) { return; }
         this.set({ Likes: this.get('Likes') + 1 });
     }
 });
-
 
 //create the BookView prototype (class)    
 tf.BookView = Backbone.View.extend({
