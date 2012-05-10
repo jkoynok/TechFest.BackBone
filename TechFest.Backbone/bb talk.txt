@@ -42,7 +42,12 @@ what it does for you:
 it references a model
 it wires up dom events
 it exposes event handlers
-it renders itself
+it create it's own dom element and add itself to the tree.  This is not as trivial as it sounds.
+Rendering is all about inserting a LIVE DOM NODE, with both content and an underlying model, and callbacks that connect the two.
+
+-css selector (not useful)
+-id selector (userful)
+-tagname (useful for lists)
 
 slide 5
 

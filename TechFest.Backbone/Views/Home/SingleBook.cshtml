@@ -34,14 +34,17 @@ $(document).ready(function() {
             events: { 
               'click' : 'like'        
              },
+             attributes : {
+                'title' : 'jk'
+             },
              like: function() {
                 //increment the likes
                 this.model.IncrementLikes();           
                 this.render();
              },
              render: function() {               
-                $(this.el).html(this.model.get('Title') + '(' + this.model.get('Likes') + ' likes)');
-                 return this;
+                this.$el.html(this.model.get('Title') + '(' + this.model.get('Likes') + ' likes)');
+                return this;
              }
     });
 
@@ -52,7 +55,6 @@ $(document).ready(function() {
 });
 
 //so what?
-
 
 </script>
 <script type='text/html' id='bookTemplate'>

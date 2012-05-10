@@ -21,7 +21,7 @@ tf.BookView = Backbone.View.extend({
         this.render();
     },
     render: function () {
-        $(this.el).html(this.model.get('Title') + '(' + this.model.get('Likes') + ' likes)');
+        this.$el.html(this.model.get('Title') + '(' + this.model.get('Likes') + ' likes)');
         return this;
     }
 });
