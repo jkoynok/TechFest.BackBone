@@ -17,14 +17,15 @@ tf.RawBooks = @Html.Raw(Json.Encode(Model));
 
 $(document).ready(function() { 
     //convert raw data to a backbone model
-    tf.BookCollection = [];
+    tf.BookCollection = new Backbone.Collection();
     //populate array of bookviews
     _.each(tf.RawBooks, function(x) {                     
-           tf.BookCollection.push(new tf.BookView({model : new tf.BookModel(x)}));       
+           tf.BookCollection.add(new tf.BookModel(x));       
     });
-    //render them
-    _.each(tf.BookCollection, function(x) {
-        $('#books').append(x.render().el);
+
+    //render them   
+    tf.BookCollection.each(function(x) {       
+        $('#books').append(new tf.BookView({model : x}).render().el);
     });
 });
 
