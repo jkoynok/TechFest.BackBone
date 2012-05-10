@@ -1,0 +1,32 @@
+﻿@model TechFest.Backbone.Models.Book
+
+@{
+    ViewBag.Title = "SingleBook";
+}
+
+<h2>SingleBook</h2>
+<ul id='books'>
+    <li><span data-bind="text: Title"></span> - (<span data-bind="text: Likes, click: IncrementLikes"></span>)</li>
+</ul>
+@*<script src="../../Scripts/knockout-2.1.0.js" type="text/javascript"></script>*@
+<script type="text/javascript">
+
+   //bootstrap in some server data
+    rawmodel = @Html.Raw(Json.Encode(Model)); 
+ 
+    //ko
+    function Book(data) {
+        var self = this;
+        this.Title = ko.observable(data.Title);
+        this.Likes = ko.observable(data.Likes);
+        this.IncrementLikes = function() {
+            self.Likes(self.Likes() + 1);
+        }
+      
+    }
+
+    $(document).ready(function() {
+        ko.applyBindings(new Book(rawmodel));
+    });
+
+</script>

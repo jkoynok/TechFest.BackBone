@@ -1,0 +1,58 @@
+﻿
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<h2>@ViewBag.Message</h2>
+<p>
+    To learn more about ASP.NET MVC visit <a href="http://asp.net/mvc" title="ASP.NET MVC Website">http://asp.net/mvc</a>.
+</p>
+
+<div id='myel'></div>
+<ul id='myul'>
+</ul>
+
+<ul>
+    <li class='myli'></li>
+    <li class='myli'></li>
+    <li class='myli'></li>
+</ul>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        var m = new Backbone.Model({ age: 40 });
+        var MyView = Backbone.View.extend({
+            el: '#myel',
+            tagName: 'li',
+            attributes: {
+                'data-jk': '55'
+            },
+            events: {
+                'change.cb': 'inc'
+            },
+            inc: function () {
+                this.model.set({ age: 0 });
+                this.render();
+            },
+            render: function () {
+                //use css selector to append to write to $el
+                //use tagName to write tags to *another* selector
+                this.$el.empty();
+                this.$el.append('<input class="cb" type="checkbox"/>');
+                this.$el.append(this.model.get("age"));
+                //$('#myul').append(this.el);
+                return this;
+            }
+        });
+        v = new MyView({ model: m });
+        v.render();
+        var v2 = new MyView({ model: new Backbone.Model({ age: 45 }) });
+        v2.render();
+
+    });
+
+    //either use #el
+    //or
+    // $('#el').append(v.render().el);
+
+</script>

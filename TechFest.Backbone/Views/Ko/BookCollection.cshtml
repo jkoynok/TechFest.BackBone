@@ -1,0 +1,38 @@
+﻿@model IEnumerable<TechFest.Backbone.Models.Book>
+
+@{
+    ViewBag.Title = "BookCollection";
+}
+<script src="../../Scripts/tf.Book.js" type="text/javascript"></script>
+<h2>BookCollection</h2>
+
+<ul id='books'>
+
+</ul>
+<input type="button" value="add new" id='add_wap' />
+<script type="text/javascript">
+
+var tf = tf || {};
+tf.RawBooks = @Html.Raw(Json.Encode(Model));    
+
+$(document).ready(function() { 
+    //convert raw data to a backbone model
+    tf.BookCollection = new Backbone.Collection();
+    //populate array of bookviews
+    _.each(tf.RawBooks, function(x) {                     
+           tf.BookCollection.add(new tf.BookModel(x));       
+    });
+
+    //render them   
+    tf.BookCollection.each(function(x) {       
+        $('#books').append(new tf.BookView({model : x}).render().el);
+    });
+
+    $("#add_wap").click(function() {
+        $('#books').append(new tf.BookView({model: new tf.BookModel({ Title: 'War and Peace', Likes: 0}) }).render().el);
+    });
+});
+
+//so what?!? -> we just stabilized and reused code, we can test it, and DEVELOP it and MAKE IT BETTER.
+
+</script>

@@ -16,8 +16,6 @@ Slide 2
 
 client side mvc - dom events on js models
 
-slide 2.5
-
 the players ->
 big list, but focus on bb, ko, ember/sproutcore
 alternatives:  jquery ui, widgets, 
@@ -28,8 +26,8 @@ slide 3
 the prototype/instance model
 
 basics the model compare the model to a poco -> pojo
--starts as a pojo of Data Only
--then you ADD custom methods, validation
+--starts as a pojo of Data Only
+--then you ADD custom methods, validation
 
 slide 3.5
 -, exposes special getters/setters
