@@ -13,9 +13,13 @@
 
 $(document).ready(function() {
 
+    //bootstrap in some data
     var rawmodel = @Html.Raw(Json.Encode(Model)); 
-    var bbmodel = new Backbone.Model(rawmodel);
     
+    //wrap our raw server data
+    var bbmodel = new Backbone.Model(rawmodel);
+
+    //create the BookView prototype (class)    
     var BookView = Backbone.View.extend({
             tagName: 'li',
             events: { 
@@ -30,8 +34,7 @@ $(document).ready(function() {
              }
     });
 
-    //pass in model.  !!el is an object ref!!
-
+    //new up a new BookView with our model
     var v = new BookView({model : bbmodel});
     $('#books').append(v.render().el);
 
