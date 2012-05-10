@@ -23,7 +23,8 @@ $(document).ready(function() {
     tf.BookModel = Backbone.Model.extend({
         IncrementLikes: function() {
             this.set({ Likes : this.get('Likes') + 1});    
-        }
+        },
+        url : '/'
     });
 
     //convert raw data to a backbone model
