@@ -9,6 +9,7 @@
 
 </ul>
 
+<div id='msg'></div>
 <script type="text/javascript">
 
 var tf = {};
@@ -48,6 +49,11 @@ $(document).ready(function() {
     //new up a new BookView instance with our model
     tf.bookView = new tf.BookView({model : tf.bookModel});
     $('#books').append(tf.bookView.render().el);
+
+    //it is an object that exposes bb events
+    tf.bookModel.on('change', function(x) {
+        $('#msg').html('it has ' + this.get('Likes') + ' likes');
+    });
 
 });
 
