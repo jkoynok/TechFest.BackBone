@@ -11,32 +11,50 @@
 
 <script type="text/javascript">
 
+var tf = {};
+
 $(document).ready(function() {
 
-    var rawmodel = @Html.Raw(Json.Encode(Model)); 
-    var bbmodel = new Backbone.Model(rawmodel);
+    //bootstrap in some server data
+    tf.rawmodel = @Html.Raw(Json.Encode(Model)); 
     
-    var BookView = Backbone.View.extend({
+    //create a bb Book Model
+    tf.BookModel = Backbone.Model.extend({
+        IncrementLikes: function() {
+            this.set({ Likes : this.get('Likes') + 1});    
+        }
+    });
+
+    //convert raw data to a backbone model
+    tf.bookModel = new tf.BookModel(tf.rawmodel);
+
+    //create the BookView prototype (class)    
+    tf.BookView = Backbone.View.extend({
             tagName: 'li',
             events: { 
-              'click' : 'showlikes'        
+              'click' : 'like'        
              },
-             showlikes: function() {
-                alert('book has ' + this.model.get('Likes') + ' likes');
+             like: function() {
+                //increment the likes
+                this.model.IncrementLikes();           
+                this.render();
              },
              render: function() {               
-                $(this.el).html(this.model.get('Title'));
-                return this;
+                $(this.el).html(this.model.get('Title') + '(' + this.model.get('Likes') + ' likes)');
+                 return this;
              }
     });
 
-    //pass in model.  !!el is an object ref!!
-
-    var v = new BookView({model : bbmodel});
-    $('#books').append(v.render().el);
+    //new up a new BookView instance with our model
+    tf.bookView = new tf.BookView({model : tf.bookModel});
+    $('#books').append(tf.bookView.render().el);
 
 });
 
+//so what?
 
 
+</script>
+<script type='text/html' id='bookTemplate'>
+    <li class='book'>{title} - ({Likes} likes)</li>
 </script>
