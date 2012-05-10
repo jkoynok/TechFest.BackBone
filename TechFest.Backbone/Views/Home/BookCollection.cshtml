@@ -1,0 +1,13 @@
+﻿@model IEnumerable<TechFest.Backbone.Models.Book>
+
+@{
+    ViewBag.Title = "BookCollection";
+}
+
+<h2>BookCollection</h2>
+<script type="text/javascript">
+    var p = @Html.Raw(Json.Encode(Model)); 
+
+    
+
+</script>

@@ -5,7 +5,38 @@
 }
 
 <h2>SingleBook</h2>
+<ul id='books'>
+
+</ul>
+
 <script type="text/javascript">
-    var p = @Html.Raw(Json.Encode(Model)); 
+
+$(document).ready(function() {
+
+    var rawmodel = @Html.Raw(Json.Encode(Model)); 
+    var bbmodel = new Backbone.Model(rawmodel);
+    
+    var BookView = Backbone.View.extend({
+            tagName: 'li',
+            events: { 
+              'click' : 'showlikes'        
+             },
+             showlikes: function() {
+                alert('book has ' + this.model.get('Likes') + ' likes');
+             },
+             render: function() {               
+                $(this.el).html(this.model.get('Title'));
+                return this;
+             }
+    });
+
+    //pass in model.  !!el is an object ref!!
+
+    var v = new BookView({model : bbmodel});
+    $('#books').append(v.render().el);
+
+});
+
+
 
 </script>
