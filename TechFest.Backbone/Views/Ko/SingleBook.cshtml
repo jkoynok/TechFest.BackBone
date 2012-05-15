@@ -14,11 +14,13 @@
    //bootstrap in some server data
     rawmodel = @Html.Raw(Json.Encode(Model)); 
  
+    var tfk = tfk || {};
     //ko
     function Book(data) {
         var self = this;
         this.Title = ko.observable(data.Title);
         this.Likes = ko.observable(data.Likes);
+        this.Hates = 4;
         this.IncrementLikes = function() {
             self.Likes(self.Likes() + 1);
         }
@@ -26,7 +28,8 @@
     }
 
     $(document).ready(function() {
-        ko.applyBindings(new Book(rawmodel));
+        tfk.b = new Book(rawmodel);
+        ko.applyBindings(tfk.b);
     });
 
 </script>
