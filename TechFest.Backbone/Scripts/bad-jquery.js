@@ -1,8 +1,7 @@
 ﻿
+
 //spay-query
-
 $(document).ready(function () {
-
     //initial fields in global scope
     var Likes = 0;
     var Title = 'Great Expectations';
@@ -12,7 +11,8 @@ $(document).ready(function () {
             //stuff
             Likes = Likes+1;
             UpdateLikes();
-    });    
+        });    
+
 
 });
 

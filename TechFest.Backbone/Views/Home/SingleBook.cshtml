@@ -11,7 +11,7 @@
 
 <script type="text/javascript">
 
-var tf = {};
+var tf = tf || {};
 
 $(document).ready(function() {
 
@@ -50,6 +50,7 @@ $(document).ready(function() {
 
     //new up a new BookView instance with our model
     tf.bookView = new tf.BookView({model : tf.bookModel});
+    //the view is entirely virtual until added to the dom
     $('#books').append(tf.bookView.render().el);
 
 });

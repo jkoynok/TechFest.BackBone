@@ -28,6 +28,11 @@ big list, but focus on bb, ko, ember/sproutcore
 alternatives:  jquery ui, widgets, 
 
 nice chart
+-bb is all about building a dom node that references a underlying model
+-ko is all about a declaring a dom node and configuring its behaviour and behaviors via properties in the data-bind tag
+
+-they both have rich models with actions, computed properties and validation
+
 
 slide 3
 the prototype/instance model
@@ -99,8 +104,10 @@ slide 10
 conclusions - takeaway
 -clean separation into rich objects
 -you will LEARN js again, new syntax
--client side IS here as rich mode
--after you take away compatibility, devices, accessibility, etc.
+-client side development as a credible first-class enviroment IS here now today.  
+It's not something that is going to happen.  After years of shortcoming is browsers and tools it is here for real today.
+-after you take away compatibility, devices, accessibility, etc. and it's not going away.
+
 
 
 
