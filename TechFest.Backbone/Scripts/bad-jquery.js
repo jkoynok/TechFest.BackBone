@@ -18,9 +18,8 @@ $(document).ready(function () {
 
 //global scope functions
 function UpdateLikes() {
-    //save to db - > 
+    //save to db - >
     $('#foo').html(Title + '(' + Likes.toString() + ')');
-    
 }
 
 //problems

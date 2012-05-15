@@ -1,14 +1,20 @@
 
 Slide 1 - Server MVC
 
-the problem
--who has code the looks like this:
+-questions for audience:
+-who's .net/ruby/php/java
+-who's using backbone?  who's using another framework? custom (don't need one?)
 
+intro the sample:
+-show the rows in the db
+-demo the functionality
+
+the problem
+-who has code the looks like this?
 
 function x, function y, function z
 
 -who is using a js framework?
-
 
 server side mvc - what is it, how does it work?
 diffs- only responds to http events on server models
