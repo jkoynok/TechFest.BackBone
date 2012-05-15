@@ -98,7 +98,6 @@ cons:
 -poor 2-way binding -> relies on complete rerendering
 -not suited to deeply nested objects
 
-
 slide 10
 
 conclusions - takeaway
