@@ -24,6 +24,9 @@ $(document).ready(function() {
         IncrementLikes: function() {
             this.set({ Likes : this.get('Likes') + 1});    
         },
+        IncrementLikes: function() {
+            this.set({ Likes : this.get('Likes') + 1});
+        },
         url : '/'
     });
 
@@ -35,9 +38,6 @@ $(document).ready(function() {
             tagName: 'li',
             events: { 
               'click' : 'like'        
-             },
-             attributes : {
-                'title' : 'jk'
              },
              like: function() {
                 //increment the likes
@@ -56,9 +56,9 @@ $(document).ready(function() {
     $('#books').append(tf.bookView.render().el);
 
     //it is an object that exposes bb events
-    tf.bookModel.on('change', function(x) {
-        $('#msg').html('it has ' + this.get('Likes') + ' likes');
-    });
+//    tf.bookModel.on('change', function(x) {
+//        $('#msg').html('it has ' + this.get('Likes') + ' likes');
+//    });
 
 });
 

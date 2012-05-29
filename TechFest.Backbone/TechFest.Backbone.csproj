@@ -85,7 +85,7 @@
       <DependentUpon>Books.mdf</DependentUpon>
     </Content>
     <Content Include="bb talk.txt" />
-    <Content Include="books.js" />
+    <Content Include="Scripts\books.js" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
@@ -116,6 +116,7 @@
     <Content Include="Global.asax" />
     <Content Include="Scripts\backbone-min.js" />
     <Content Include="Scripts\bad-jquery.js" />
+    <Content Include="Scripts\book.js" />
     <Content Include="Scripts\jquery-1.5.1-vsdoc.js" />
     <Content Include="Scripts\jquery-1.5.1.js" />
     <Content Include="Scripts\jquery-1.5.1.min.js" />
