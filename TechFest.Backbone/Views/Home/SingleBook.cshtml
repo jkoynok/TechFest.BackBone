@@ -14,7 +14,12 @@
 
 var tf = tf || {};
 
+
 $(document).ready(function() {
+
+    _.templateSettings = {
+        interpolate : /\{\{(.+?)\}\}/g
+    };
 
     //bootstrap in some server data
     tf.rawmodel = @Html.Raw(Json.Encode(Model)); 
@@ -37,15 +42,22 @@ $(document).ready(function() {
     tf.BookView = Backbone.View.extend({
             tagName: 'li',
             events: { 
-              'click' : 'like'        
+              'click .l' : 'like'        
+             },
+             initialize: function() {
+                var self = this;
+                this.model.on('change', function() {
+                    self.render();
+                });
              },
              like: function() {
                 //increment the likes
                 this.model.IncrementLikes();           
-                this.render();
+                //this.render();
              },
              render: function() {               
-                this.$el.html(this.model.get('Title') + '(' + this.model.get('Likes') + ' likes)');
+                //this.$el.html(this.model.get('Title') + '(' + this.model.get('Likes') + ' likes)');
+                this.$el.html(_.template($('#bookTemplate').html(), this.model.toJSON()));
                 return this;
              }
     });
@@ -66,5 +78,5 @@ $(document).ready(function() {
 
 </script>
 <script type='text/html' id='bookTemplate'>
-    <li class='book'>{title} - ({Likes} likes)</li>
+    <li class='book'>{{Title}} - ({{Likes}} likes) <span class='l'>[L]</span></li>
 </script>
