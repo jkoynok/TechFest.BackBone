@@ -16,6 +16,11 @@ var tf = tf || {};
 tf.RawBooks = @Html.Raw(Json.Encode(Model));    
 
 $(document).ready(function() { 
+
+    _.templateSettings = {
+        interpolate : /\{\{(.+?)\}\}/g
+    };
+
     //convert raw data to a backbone model
     tf.BookCollection = new Backbone.Collection();
     //populate array of bookviews
