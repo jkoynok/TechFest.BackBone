@@ -6,14 +6,11 @@
 
 <h2>SingleBook</h2>
 <ul id='books'>
-
 </ul>
 
-<div id='msg'></div>
 <script type="text/javascript">
 
 var tf = tf || {};
-
 
 $(document).ready(function() {
 
@@ -28,11 +25,7 @@ $(document).ready(function() {
     tf.BookModel = Backbone.Model.extend({
         IncrementLikes: function() {
             this.set({ Likes : this.get('Likes') + 1});    
-        },
-        IncrementLikes: function() {
-            this.set({ Likes : this.get('Likes') + 1});
-        },
-        url : '/'
+        }
     });
 
     //convert raw data to a backbone model
@@ -67,10 +60,6 @@ $(document).ready(function() {
     //the view is entirely virtual until added to the dom
     $('#books').append(tf.bookView.render().el);
 
-    //it is an object that exposes bb events
-//    tf.bookModel.on('change', function(x) {
-//        $('#msg').html('it has ' + this.get('Likes') + ' likes');
-//    });
 
 });
 

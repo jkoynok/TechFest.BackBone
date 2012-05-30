@@ -16,15 +16,22 @@ tf.BookModel = Backbone.Model.extend({
 tf.BookView = Backbone.View.extend({
     tagName: 'li',
     events: {
-        'click': 'like'
+        'click .l': 'like'
+    },
+    initialize: function () {
+        var self = this;
+        //subscribe to the model change
+        this.model.on('change', function () {
+            self.render();
+        });
     },
     like: function () {
         //increment the likes
         this.model.IncrementLikes();
-        this.render();
     },
     render: function () {
-        this.$el.html(this.model.get('Title') + '(' + this.model.get('Likes') + ' likes)');
+        //this.$el.html(this.model.get('Title') + '(' + this.model.get('Likes') + ' likes)');
+        this.$el.html(_.template($('#bookTemplate').html(), this.model.toJSON()));
         return this;
     }
 });
