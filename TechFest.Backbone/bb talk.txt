@@ -38,7 +38,7 @@ slide 3
 the prototype/instance model
 
 basics the model compare the model to a poco -> pojo
---starts as a pojo of Data Only
+--starts as a pojo of Data Only 
 --then you ADD custom methods, validation
 
 slide 3.5
