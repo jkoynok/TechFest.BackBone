@@ -24,6 +24,7 @@ function UpdateLikes() {
 
 //problems
 // - storing state in global scope -> no objects
-// - functions in global scope
+// - no separation between model and view
 // - wiring up event handlers in document ready
 // - building up html strings
+// - resists maintenance 
