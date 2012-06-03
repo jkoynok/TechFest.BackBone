@@ -21,8 +21,11 @@ $(document).ready(function () {
     //create a bb Book Model
     tf.BookModel = Backbone.Model.extend({
         incrementLikes: function () {
-            this.set('Likes', this.get('Likes') + 1);
-        }
+            var newLikeCount = this.get('Likes') + 1;
+            //this.set('Likes', this.get('Likes') + 1);
+            this.save({ 'Likes': newLikeCount });
+        },
+        url: '/'
     });
 
     //init a backbone model from the raw json data
@@ -32,8 +35,8 @@ $(document).ready(function () {
     tf.BookView = Backbone.View.extend({
         tagName: 'li',
         events: {
-            'click .l': 'like'
-
+            'click .l': 'like',
+            'click .delete' : 'remove'
         },
         initialize: function () {
             var self = this;
@@ -46,6 +49,7 @@ $(document).ready(function () {
             this.model.incrementLikes();
         },
         render: function () {
+            this.$el.html(this.model.get('Title'));
             //this.$el.html(this.model.get('Title') + '(' + this.model.get('Likes') + ' likes)');
             var markup = _.template($('#bookTemplate').html(), this.model.toJSON());
             this.$el.html(markup);
@@ -57,7 +61,7 @@ $(document).ready(function () {
     tf.bookView = new tf.BookView({ model: tf.bookModel });
     //the view is entirely virtual until added to the dom
     $('#books').append(tf.bookView.render().el);
-    
+
 });
 
 //so what?
@@ -65,5 +69,5 @@ $(document).ready(function () {
 </script>
 
 <script type='text/html' id='bookTemplate'>
-    <li class='book'>{{Title}} - ({{Likes}} likes) <span class='l'>[L]</span></li>
+    {{Title}} - ({{Likes}} likes) <span class='l'>[L]</span>
 </script>
