@@ -16,27 +16,25 @@
 
 var tf = tf || {};
 
-$(document).ready(function() { 
+$(document).ready(function () {
 
     _.templateSettings = {
-        interpolate : /\{\{(.+?)\}\}/g
+        interpolate: /\{\{(.+?)\}\}/g
     };
 
+  
     //convert raw data to a backbone model
     tf.BookCollection = new Backbone.Collection();
     //populate array of bookviews
-    _.each(tf.RawBooks, function(x) {                     
-           tf.BookCollection.add(new tf.BookModel(x));       
+    _.each(tf.RawBooks, function (x) {
+        tf.BookCollection.add(new tf.BookModel(x));
     });
 
     //render them   
-    tf.BookCollection.each(function(x) {       
-        $('#books').append(new tf.BookView({model : x}).render().el);
+    tf.BookCollection.each(function (x) {
+        $('#books').append(new tf.BookView({ model: x }).render().el);
     });
 
-    $("#add_wap").click(function() {
-        $('#books').append(new tf.BookView({model: new tf.BookModel({ Title: 'War and Peace', Likes: 0}) }).render().el);
-    });
 });
 
 //so what?!? -> we just stabilized and reused code, we can test it, and DEVELOP it and MAKE IT BETTER.

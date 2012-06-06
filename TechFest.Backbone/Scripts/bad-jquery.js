@@ -1,25 +1,25 @@
 ﻿
 
-//spay-query
+//spay-query   
 $(document).ready(function () {
     //initial fields in global scope
     var Likes = 0;
     var Title = 'Great Expectations';
 
     //manual event wireups in document ready
-    $('#foo').click(function () {
+    $('#').click(function () {
             //stuff
             Likes = Likes+1;
             UpdateLikes();
-        });    
-
-
+        });             
 });
 
 //global scope functions
 function UpdateLikes() {
     //save to db - >
-    $('#foo').html(Title + '(' + Likes.toString() + ')');
+    $.ajax('/url', Likes, function () {
+        $('#books').append('<li>' + Title + '(' + Likes.toString() + ')</li>');
+    });
 }
 
 //problems

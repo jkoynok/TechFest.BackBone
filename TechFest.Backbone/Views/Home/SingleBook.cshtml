@@ -1,73 +1,64 @@
-﻿@model TechFest.Backbone.Models.Book
-
-@{
-    ViewBag.Title = "SingleBook";
-}
+﻿
 
 <h2>Single Book</h2>
 <ul id='books'>
 </ul>
-<script src="../../Scripts/book.js" type="text/javascript"></script>
-<script type="text/javascript">
+
+<script type='text/javascript'>
 
 var tf = tf || {};
 
-$(document).ready(function () {
+tf.rawBook =
+    { "id": 1, "Title": "RabbitMQ in Action", "PageCount": 200, "Likes": 0, "PubDate": "\/Date(1336104000000)\/" };
 
-    _.templateSettings = {
-        interpolate: /\{\{(.+?)\}\}/g
-    };
+    $(document).ready(function () {
 
-    //create a bb Book Model
-    tf.BookModel = Backbone.Model.extend({
-        incrementLikes: function () {
-            var newLikeCount = this.get('Likes') + 1;
-            //this.set('Likes', this.get('Likes') + 1);
-            this.save({ 'Likes': newLikeCount });
-        },
-        url: '/'
+        _.templateSettings = {
+            interpolate: /\{\{(.+?)\}\}/g
+        };
+
+        //1 create a bb Book Model and instance
+        tf.BookModel = Backbone.Model.extend({
+            incrementLikes: function () {
+                var currentLikes = this.get("Likes");
+                this.set('Likes', currentLikes + 1);
+            }
+        });
+
+
+        tf.bookModel = new tf.BookModel(tf.rawBook);
+
+        //2 create the BookView and instance
+
+        tf.BookView = Backbone.View.extend({
+            //inherited members
+            tagName: 'li',
+            render: function () {
+               },
+            events: {
+                //'eventname selector' : 'callback'
+             },
+            initialize: function () {
+                this.model.on('change', this.render, this);
+
+            },
+            //custom
+            like: function () {
+                this.model.incrementLikes();
+            }
+        });
+    
+        tf.bookView = new tf.BookView({ model: tf.bookModel });
+        //3 render aond insert into dom
+        $('#books').append(tf.bookView.render().el);
+
+
     });
-
-    //init a backbone model from the raw json data
-    tf.bookModel = new tf.BookModel(tf.rawBook);
-
-    //create the BookView prototype (class)    
-    tf.BookView = Backbone.View.extend({
-        tagName: 'li',
-        events: {
-            'click .l': 'like',
-            'click .delete' : 'remove'
-        },
-        initialize: function () {
-            var self = this;
-            this.model.on('change', function () {
-                self.render();
-            });
-        },
-        like: function () {
-            //increment the likes
-            this.model.incrementLikes();
-        },
-        render: function () {
-            this.$el.html(this.model.get('Title'));
-            //this.$el.html(this.model.get('Title') + '(' + this.model.get('Likes') + ' likes)');
-            var markup = _.template($('#bookTemplate').html(), this.model.toJSON());
-            this.$el.html(markup);
-            return this;
-        }
-    });
-
-    //new up a new BookView instance with our model
-    tf.bookView = new tf.BookView({ model: tf.bookModel });
-    //the view is entirely virtual until added to the dom
-    $('#books').append(tf.bookView.render().el);
-
-});
 
 //so what?
 
 </script>
 
 <script type='text/html' id='bookTemplate'>
-    {{Title}} - ({{Likes}} likes) <span class='l'>[L]</span>
-</script>
+    {{Title}} - ({{Likes}} likes) <span class='likeButton'>[L]</span>
+</script>   
