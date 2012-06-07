@@ -1,5 +1,4 @@
 ﻿
-
 <h2>Single Book</h2>
 <ul id='books'>
 </ul>
@@ -20,11 +19,10 @@ tf.rawBook =
         //1 create a bb Book Model and instance
         tf.BookModel = Backbone.Model.extend({
             incrementLikes: function () {
-                var currentLikes = this.get("Likes");
-                this.set('Likes', currentLikes + 1);
+                var currentLIkes = this.get('Likes');
+                this.set('Likes', currentLIkes + 1);
             }
         });
-
 
         tf.bookModel = new tf.BookModel(tf.rawBook);
 
@@ -34,21 +32,26 @@ tf.rawBook =
             //inherited members
             tagName: 'li',
             render: function () {
-               },
+                var markup = _.template($('#bookTemplate').html(), this.model.toJSON());
+                this.$el.html(markup);
+                return this;
+            },
             events: {
                 //'eventname selector' : 'callback'
-             },
+                'click .likeButton' : 'like'
+            },
             initialize: function () {
                 this.model.on('change', this.render, this);
 
             },
             //custom
             like: function () {
-                this.model.incrementLikes();
+                this.model.incrementLikes();  
             }
         });
-    
+
         tf.bookView = new tf.BookView({ model: tf.bookModel });
+
         //3 render aond insert into dom
         $('#books').append(tf.bookView.render().el);
 

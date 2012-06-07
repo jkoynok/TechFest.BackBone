@@ -1,20 +1,16 @@
-﻿
-
-//spay-query   
+﻿//spay-query   
 $(document).ready(function () {
-    //initial fields in global scope
+    //fields in global scope
     var Likes = 0;
     var Title = 'Great Expectations';
-
     //manual event wireups in document ready
     $('#').click(function () {
-            //stuff
-            Likes = Likes+1;
+        Likes = Likes + 1;
+            //calls to funcs in global
             UpdateLikes();
         });             
 });
 
-//global scope functions
 function UpdateLikes() {
     //save to db - >
     $.ajax('/url', Likes, function () {
