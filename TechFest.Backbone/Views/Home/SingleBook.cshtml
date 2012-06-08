@@ -17,14 +17,14 @@ tf.rawBook =
         };
 
         //1 create a bb Book Model and instance
-        tf.BookModel = Backbone.Model.extend({
-            incrementLikes: function () {
-                var currentLIkes = this.get('Likes');
-                this.set('Likes', currentLIkes + 1);
+    tf.BookModel = Backbone.Model.extend({
+            incrementLikes: function() {
+                var currentLikes = this.get('Likes');
+                this.set("Likes", currentLikes+1);
             }
         });
 
-        tf.bookModel = new tf.BookModel(tf.rawBook);
+      tf.bookModel = new tf.BookModel(tf.rawBook);
 
         //2 create the BookView and instance
 
@@ -41,20 +41,19 @@ tf.rawBook =
                 'click .likeButton' : 'like'
             },
             initialize: function () {
-                this.model.on('change', this.render, this);
-
+               this.model.on('change', this.render, this);
             },
             //custom
             like: function () {
-                this.model.incrementLikes();  
+                this.model.incrementLikes();
             }
         });
 
-        tf.bookView = new tf.BookView({ model: tf.bookModel });
+       tf.bookView = new tf.BookView({ model: tf.bookModel});
 
+     
         //3 render aond insert into dom
-        $('#books').append(tf.bookView.render().el);
-
+            $('#books').append(tf.bookView.render().el);
 
     });
 
